@@ -169,9 +169,9 @@ class EditorTextSelectionOverlay {
     _handlesVisible = visible;
     // If we are in build state, it will be too late to update visibility.
     // We will need to schedule the build in next frame.
-    if (SchedulerBinding.instance!.schedulerPhase ==
+    if (SchedulerBinding.instance.schedulerPhase ==
         SchedulerPhase.persistentCallbacks) {
-      SchedulerBinding.instance!.addPostFrameCallback(_markNeedsBuild);
+      SchedulerBinding.instance.addPostFrameCallback(_markNeedsBuild);
     } else {
       _markNeedsBuild();
     }
@@ -223,9 +223,9 @@ class EditorTextSelectionOverlay {
   void update(TextEditingValue newValue) {
     if (_value == newValue) return;
     _value = newValue;
-    if (SchedulerBinding.instance!.schedulerPhase ==
+    if (SchedulerBinding.instance.schedulerPhase ==
         SchedulerPhase.persistentCallbacks) {
-      SchedulerBinding.instance!.addPostFrameCallback(_markNeedsBuild);
+      SchedulerBinding.instance.addPostFrameCallback(_markNeedsBuild);
     } else {
       _markNeedsBuild();
     }
@@ -368,8 +368,9 @@ class EditorTextSelectionOverlay {
         break;
     }
     // TODO: update to use userUpdateTextEditingValue
-    selectionDelegate!.textEditingValue =
-        _value.copyWith(selection: newSelection, composing: TextRange.empty);
+    selectionDelegate!.userUpdateTextEditingValue(
+        _value.copyWith(selection: newSelection, composing: TextRange.empty),
+        SelectionChangedCause.tap);
     selectionDelegate!.bringIntoView(textPosition);
   }
 }
