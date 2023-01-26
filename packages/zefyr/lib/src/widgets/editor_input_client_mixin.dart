@@ -295,6 +295,13 @@ mixin RawEditorStateTextInputClientMixin on EditorState
   }
 
   @override
+  void didChangeInputControl(
+      TextInputControl? oldControl, TextInputControl? newControl) {}
+
+  @override
+  void performSelector(String selectorName) {}
+
+  @override
   void connectionClosed() {
     if (hasConnection) {
       _textInputConnection!.connectionClosedReceived();
