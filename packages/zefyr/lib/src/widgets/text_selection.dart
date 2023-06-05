@@ -189,7 +189,7 @@ class EditorTextSelectionOverlay {
               _buildHandle(context, _TextSelectionHandlePosition.end)),
     ];
 
-    Overlay.of(context, rootOverlay: true, debugRequiredFor: debugRequiredFor)!
+    Overlay.of(context, rootOverlay: true, debugRequiredFor: debugRequiredFor)
         .insertAll(_handles!);
   }
 
@@ -206,7 +206,7 @@ class EditorTextSelectionOverlay {
   void showToolbar() {
     assert(_toolbar == null);
     _toolbar = OverlayEntry(builder: _buildToolbar);
-    Overlay.of(context, rootOverlay: true, debugRequiredFor: debugRequiredFor)!
+    Overlay.of(context, rootOverlay: true, debugRequiredFor: debugRequiredFor)
         .insert(_toolbar!);
     _toolbarController.forward(from: 0.0);
   }
@@ -1009,7 +1009,9 @@ class EditorTextSelectionGestureDetector extends StatefulWidget {
   /// The frequency of calls is throttled to avoid excessive text layout
   /// operations in text fields. The throttling is controlled by the constant
   /// [_kDragSelectionUpdateThrottle].
-  final DragSelectionUpdateCallback? onDragSelectionUpdate;
+  final Function(
+          DragStartDetails startDetails, DragUpdateDetails updateDetails)?
+      onDragSelectionUpdate;
 
   /// Called when a mouse that was previously dragging is released.
   final GestureDragEndCallback? onDragSelectionEnd;
