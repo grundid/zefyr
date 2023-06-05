@@ -1,11 +1,12 @@
 import 'dart:convert';
 
+import 'package:example/src/launch_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:zefyr/zefyr.dart';
 
 class TextFieldScreen extends StatefulWidget {
-  const TextFieldScreen({Key key, this.title}) : super(key: key);
+  const TextFieldScreen({super.key, required this.title});
 
   final String title;
 
@@ -14,7 +15,7 @@ class TextFieldScreen extends StatefulWidget {
 }
 
 class _TextFieldScreenState extends State<TextFieldScreen> {
-  ZefyrController _controller;
+  late ZefyrController _controller;
   final FocusNode _focusNode = FocusNode();
 
   @override
@@ -60,17 +61,12 @@ class _TextFieldScreenState extends State<TextFieldScreen> {
             autofocus: true,
             // readOnly: true,
             padding: const EdgeInsets.only(left: 16, right: 16),
-            onLaunchUrl: _launchUrl,
+            onLaunchUrl: onLaunchUrl,
           ),
         ),
       ),
     );
   }
 
-  void _launchUrl(String url) async {
-    final result = await canLaunch(url);
-    if (result) {
-      await launch(url);
-    }
-  }
+  
 }
