@@ -715,8 +715,8 @@ class RawEditorState extends EditorState
         WidgetsBindingObserver,
         TickerProviderStateMixin<RawEditor>,
         RawEditorStateTextInputClientMixin,
-        RawEditorStateSelectionDelegateMixin
-    implements TextSelectionDelegate {
+        RawEditorStateSelectionDelegateMixin,
+        TextSelectionDelegate {
   final GlobalKey _editorKey = GlobalKey();
 
   // Theme
