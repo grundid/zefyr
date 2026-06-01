@@ -327,4 +327,13 @@ mixin RawEditorStateTextInputClientMixin on EditorState
       });
     }
   }
+
+  /// Notifies the client that the platform moved focus back to this input.
+  ///
+  /// This is necessary to support autofill on some browsers (e.g. iOS Safari) that blur the text
+  /// field and refocus it before autofilling.
+  ///
+  /// Returns true if the client acquired focus, false otherwise.
+  @override
+  bool onFocusReceived() => false;
 }
